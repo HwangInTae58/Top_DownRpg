@@ -77,7 +77,7 @@ public class PlayerMover : MonoBehaviour
 
     void Action()
     {
-        if (Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVec, 2f, LayerMask.GetMask("Object" , "NPC"));
             Debug.DrawRay(transform.position, dirVec * 1.5f, new Color(0, 1, 0));

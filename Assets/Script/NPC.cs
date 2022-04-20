@@ -28,6 +28,7 @@ public class NPC : MonoBehaviour, IInteraction
         }
         else
         {
+            manager.SetActiveDialog(false);
             converIndex = 0;
             return false;
         }
