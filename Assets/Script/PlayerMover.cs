@@ -1,88 +1,96 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
-    public float moveSpeed = 3.0f;
 
-    Rigidbody2D rigid;
     Animator anim;
+
+    public float moveSpeed = 1.0f;
 
     float vSpeed;
     float hSpeed;
 
-    Vector2 dirVec = Vector2.down;
-
     bool isActing = false;
 
+    //0 : 위, 1 : 오른쪽, 2 : 아래 , 3 : 왼
+    int direction;
+    Vector2 dirVec;
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
         Move();
-        LookAt();
         Action();
     }
-
     private void Move()
     {
         if (isActing)
             return;
-
-        // 이동처리
         vSpeed = Input.GetAxisRaw("Vertical");
         hSpeed = Input.GetAxisRaw("Horizontal");
         anim.SetFloat("vSpeed", vSpeed);
         anim.SetFloat("hSpeed", hSpeed);
         Vector2 moveVec = new Vector2(hSpeed, vSpeed);
-        anim.SetBool("isMove", moveVec.sqrMagnitude > 0.01f);
+        anim.SetBool("IsMove", moveVec.magnitude < 0.01f);
 
-        rigid.velocity = new Vector2(hSpeed, vSpeed) * moveSpeed;
-    }
+        if (Input.GetButtonDown("Vertical"))
+        {
+            if (vSpeed > 0)
+            {
+                //위
+                direction = 0;
+                dirVec = Vector2.up;
+            }
+            else
+            {
+                //아래
+                direction = 2;
+                dirVec = Vector2.down;
+            }
+        }
 
-    private void LookAt()
-    {
-        // 마지막으로 보고 있었던 방향 구하기
-        if (vSpeed > 0)
+        if (Input.GetButtonDown("Horizontal"))
         {
-            dirVec = Vector2.up;
+            if (hSpeed > 0)
+            {
+                //오른쪽
+                direction = 1;
+                dirVec = Vector2.right;
+            }
+            else
+            {
+                //왼쪽
+                direction = 3;
+                dirVec = Vector2.left;
+            }
         }
-        else if (vSpeed < 0)
-        {
-            dirVec = Vector2.down;
-        }
-        else if (hSpeed > 0)
-        {
-            dirVec = Vector2.right;
-        }
-        else if (hSpeed < 0)
-        {
-            dirVec = Vector2.left;
-        }
-        anim.SetFloat("dirV", dirVec.y);
-        anim.SetFloat("dirH", dirVec.x);
+        anim.SetInteger("diraction", direction);
+
+
+        transform.Translate(new Vector2(hSpeed, vSpeed) * moveSpeed * Time.deltaTime);
     }
 
     void Action()
     {
-        Debug.DrawRay(transform.position, dirVec * 1.5f, new Color(0, 1, 0));
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButton("Jump"))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVec, 1.5f, LayerMask.GetMask("Object", "NPC"));
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVec, 2f, LayerMask.GetMask("Object", "NPC"));
+            Debug.DrawRay(transform.position, dirVec * 1.5f, new Color(0, 1, 0));
             if (null != hit.collider)
             {
-                IInteractable target = hit.collider.GetComponent<IInteractable>();
+                IInteractable target = hit.collider.gameObject.GetComponent<IInteractable>();
                 if (null != target)
                 {
                     isActing = target.ReAction();
-                    return;
                 }
+                return;
             }
         }
     }
+
 }

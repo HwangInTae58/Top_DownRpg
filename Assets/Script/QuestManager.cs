@@ -21,7 +21,7 @@ public class QuestManager : MonoBehaviour
     {
         Debug.Log("퀘스트 완료");
         Debug.Log("퀘스트 보상 골드 : " + quest.goldReward);
-        Debug.Log("퀘스트 보상 경험치 : " + quest.goldReward);
+        Debug.Log("퀘스트 보상 경험치 : " + quest.expReward);
         curQuest = null;
     }
 
