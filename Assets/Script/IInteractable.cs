@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteraction
+public interface IInteractable
 {
     bool ReAction();
-  
 }

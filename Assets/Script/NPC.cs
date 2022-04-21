@@ -2,37 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour, IInteraction
+public class NPC : MonoBehaviour, IInteractable
 {
-        GameManager manager;
+    public Conversation conversation;
 
-    
-    [SerializeField]
-    public string Titlename;
+    private Quest[] quests;
 
-    [TextArea]
-    public string[] conversation;
-    int converIndex = 0;
     private void Start()
     {
-        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        quests = GetComponentsInChildren<Quest>();
     }
+
     public bool ReAction()
     {
-        if (converIndex < conversation.Length)
+        // 퀘스트가 있는지 확인
+        Quest next = null;
+        foreach (Quest quest in quests)
         {
-            manager.SetActiveDialog(true);
-            manager.SetDialogContent(Titlename, conversation[converIndex]);
-            converIndex++;
-            return true;
+            if (quest.isActive)
+            {
+                next = quest;
+                break;
+            }
         }
-        else
+
+        if (null != next) // 2. 퀘스트 상호작용 시작
         {
-            manager.SetActiveDialog(false);
-            converIndex = 0;
-            return false;
+            return next.ReAction();
+        }
+        else // 3. 퀘스트가 없을 때
+        {
+            return conversation.ReAction();
         }
     }
-    
 }
-

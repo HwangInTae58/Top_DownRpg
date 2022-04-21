@@ -1,27 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Chest : MonoBehaviour, IInteractable
+[System.Serializable]
+public class Conversation : MonoBehaviour, IInteractable
 {
     GameManager manager;
 
     [SerializeField]
-    public string Titlename;
+    private string title;
 
+    [TextArea]
     public string[] conversation;
+
     int converIndex = 0;
-   
+
+
+
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
+
     public bool ReAction()
     {
-        if(converIndex < conversation.Length)
+        if (converIndex < conversation.Length)
         {
             manager.SetActiveDialog(true);
-            manager.SetDialogContent(Titlename, conversation[converIndex]);
+            manager.SetDialogContent(title, conversation[converIndex]);
             converIndex++;
             return true;
         }
@@ -31,6 +38,5 @@ public class Chest : MonoBehaviour, IInteractable
             converIndex = 0;
             return false;
         }
-        
     }
 }

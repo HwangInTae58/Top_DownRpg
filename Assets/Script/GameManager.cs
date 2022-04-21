@@ -6,16 +6,16 @@ public class GameManager : MonoBehaviour
 {
     public GameObject dialog;
     public Text nameText;
-    public Text description;
+    public Text descriptionText;
 
     public void SetActiveDialog(bool active)
     {
         dialog.SetActive(active);
     }
 
-    public void SetDialogContent(string name, string descriptionText)
+    public void SetDialogContent(string name, string desc)
     {
-        nameText.text = name  ;
-        description.text = descriptionText;
+        nameText.text = name;
+        descriptionText.text = desc;
     }
 }
