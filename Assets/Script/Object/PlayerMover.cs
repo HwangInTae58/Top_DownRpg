@@ -92,5 +92,17 @@ public class PlayerMover : MonoBehaviour
             }
         }
     }
+    void Attack()
+    {
+        if (Input.GetButtonDown("Attack"))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVec, 10f, LayerMask.GetMask("Monster"));
+            Debug.DrawRay(transform.position, dirVec * 1.5f, new Color(1, 0, 0));
+            if(null != hit.collider)
+            {
+                //근접 공격시 레이캐스터로 몬스터와 충돌
+            }
+        }
+    }
 
 }

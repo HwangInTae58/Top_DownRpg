@@ -52,7 +52,6 @@ public class QuestManager : MonoBehaviour
             return;
         if (curQuest.requirementName != itemName)
             return;
-
         curQuest.Progress();
     }
 

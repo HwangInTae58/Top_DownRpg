@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4154810403582938732}
   - component: {fileID: 7755027035970381428}
-  - component: {fileID: 2960956296814022320}
   - component: {fileID: 8872540644729496227}
   - component: {fileID: -2122369431794947364}
+  - component: {fileID: 225477965863545021}
   m_Layer: 0
   m_Name: Gem
   m_TagString: Untagged
@@ -81,21 +81,9 @@ SpriteRenderer:
   m_Size: {x: 0.4375, y: 0.4375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2960956296814022320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918226238696926714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd7151ab2d45e3c47a66b150f4f747b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &8872540644729496227
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -131,3 +119,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &225477965863545021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918226238696926714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0782bc90893f4bbf32013d1bb968a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 8df49d398c8b2ec46bb62f9c7915649a, type: 2}
+  name: Gem

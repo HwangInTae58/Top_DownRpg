@@ -19,8 +19,6 @@ public class Quest : MonoBehaviour
 
     QuestManager manager;
 
-    public bool isActive;
-
     public QuestType type;
 
     public string title;
@@ -39,6 +37,7 @@ public class Quest : MonoBehaviour
 
     public Conversation accept, progress, complete;
 
+    public bool isActive = false;
     public bool isStarted = false;
     public bool isFinished = false;
 
@@ -64,6 +63,7 @@ public class Quest : MonoBehaviour
     public void Complete()
     {
         isActive = false;
+        OnComplete.Invoke(this);
         Debug.Log(title + " was Complete!");
     }
 
@@ -93,7 +93,6 @@ public class Quest : MonoBehaviour
                 return ReAction();
             }
         }
-
         else
         {
             bool reaction = complete.ReAction();
@@ -103,7 +102,6 @@ public class Quest : MonoBehaviour
             }
             else
             {
-                OnComplete?.Invoke(this);
                 Complete();
                 return false;
             }

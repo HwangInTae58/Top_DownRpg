@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
     public InventoryUI inventoryUI;
-
+    public GameObject ui;
     public List<ItemData> items = new List<ItemData>();
     public int maxSize = 20;
 
@@ -22,9 +22,14 @@ public class InventoryManager : MonoBehaviour
     {
         _instance = this;
     }
+   
     private void Update()
     {
-        
+        if (Input.GetButtonDown("InventoryUI"))
+        {
+            ui.SetActive(!ui.activeSelf);
+            inventoryUI.UpdateUI();
+        }
     }
     public bool Add(ItemData item)
     {

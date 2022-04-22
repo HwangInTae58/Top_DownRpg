@@ -12,8 +12,8 @@ public class InventoryUnit : MonoBehaviour
 
     public void AddItem(ItemData itemData)
     {
+        Debug.Log( itemData);
         curitemData = itemData;
-
         icon.sprite = itemData.icon;
         icon.enabled = true;
         button.interactable = true;

@@ -4,18 +4,7 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    public GameObject ui;
-
     InventoryUnit[] items;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            ui.SetActive(!ui.activeSelf);
-            UpdateUI();
-        }
-    }
 
     public void UpdateUI()
     {

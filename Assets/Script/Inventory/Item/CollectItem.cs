@@ -10,7 +10,7 @@ public class CollectItem : MonoBehaviour
 
     protected void Collect()
     {
-        QuestManager.instance.OnItemGather(name);
+        QuestManager.instance.OnItemGather(data.name);
 
         if(InventoryManager.instance.Add(data))
         {
