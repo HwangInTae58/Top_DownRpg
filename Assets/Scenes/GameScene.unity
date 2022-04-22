@@ -1565,7 +1565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &190129259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1657,6 +1657,9 @@ GameObject:
   m_Component:
   - component: {fileID: 234970180}
   - component: {fileID: 234970181}
+  - component: {fileID: 234970184}
+  - component: {fileID: 234970183}
+  - component: {fileID: 234970182}
   m_Layer: 10
   m_Name: QuestCoinGet
   m_TagString: Untagged
@@ -1690,20 +1693,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfb8e3a36d5d0c4d91cc56a66cd26ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 0
+  isActive: 1
   type: 0
-  title: 
-  description: 
+  title: "\uB3C8\uC918"
+  description: "\uB3C8\t"
   requirementName: 
   curAmount: 0
-  requireAmount: 0
-  expReward: 0
+  requireAmount: 2
+  expReward: 200
   goldReward: 0
-  accept: {fileID: 0}
-  progress: {fileID: 0}
-  complete: {fileID: 0}
+  accept: {fileID: 234970184}
+  progress: {fileID: 234970183}
+  complete: {fileID: 234970182}
   isStarted: 0
   isFinished: 0
+--- !u!114 &234970182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234970179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73cc56ff4ac004c45b60e1dad6680f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: NPC1
+  conversation:
+  - "\uB3C8!"
+--- !u!114 &234970183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234970179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73cc56ff4ac004c45b60e1dad6680f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: NPC1
+  conversation:
+  - "\uBAA8"
+--- !u!114 &234970184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234970179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73cc56ff4ac004c45b60e1dad6680f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: NPC1
+  conversation:
+  - "\uC918"
 --- !u!1 &268211465
 GameObject:
   m_ObjectHideFlags: 0
@@ -7035,7 +7083,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1773877486
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7309,7 +7357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2103775691
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7397,7 +7445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2af4cf4f602194ab9653d730c50077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialog: {fileID: 190129258}
+  dialog: {fileID: 2103775690}
   nameText: {fileID: 268211467}
   descriptionText: {fileID: 1516556360}
 --- !u!4 &2140023318
