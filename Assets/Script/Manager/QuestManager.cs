@@ -5,10 +5,27 @@ using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
 {
+    private static QuestManager _instance;
+    public static QuestManager instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
     public GameObject ui;
+
+    public Text title;
+
+    public Text description;
 
     private Quest curQuest;
 
+    private void Awake()
+    {
+        _instance = this;
+    }
     public void QuestStart(Quest quest)
     {
         Debug.Log("퀘스트 시작");
@@ -22,6 +39,8 @@ public class QuestManager : MonoBehaviour
         Debug.Log("퀘스트 완료");
         Debug.Log("퀘스트 보상 골드 : " + quest.goldReward);
         Debug.Log("퀘스트 보상 경험치 : " + quest.expReward);
+        InventoryManager.instance.Add(quest.itemReward);
+
         curQuest = null;
     }
 

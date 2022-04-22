@@ -33,6 +33,7 @@ public class Quest : MonoBehaviour
     public int curAmount;
     public int requireAmount;
 
+    public ItemData itemReward;
     public int expReward;
     public int goldReward;
 
@@ -44,8 +45,8 @@ public class Quest : MonoBehaviour
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag("QuestManager").GetComponent<QuestManager>();
-        OnStart += manager.QuestStart;
-        OnComplete += manager.QuestComplete;
+        OnStart += QuestManager.instance.QuestStart;
+        OnComplete += QuestManager.instance.QuestComplete;
     }
 
     public void Accept()

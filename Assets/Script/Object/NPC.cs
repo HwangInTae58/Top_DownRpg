@@ -8,11 +8,12 @@ public class NPC : MonoBehaviour, IInteractable
 
     private Quest[] quests;
 
-    private void Start()
+    private void Awake()
     {
+        //자식의 컴포넌트를 가져오는 함수
         quests = GetComponentsInChildren<Quest>();
     }
-
+    
     public bool ReAction()
     {
         // 퀘스트가 있는지 확인
